@@ -6,7 +6,7 @@ LABEL maintainer="Bar Abudi <barabudy@gmail.com>"
 WORKDIR /webmin
 
 # Install updates and additional required package dependencies
-COPY packages.txt ./webmin/
+COPY packages.txt .
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     xargs -a packages.txt apt-get install -y && \
