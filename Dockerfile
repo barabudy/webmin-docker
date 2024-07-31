@@ -31,8 +31,8 @@ RUN echo root:password | chpasswd && \
     wget http://www.webmin.com/jcameron-key.asc && \
     apt-key add jcameron-key.asc && \
     apt-get update && \
-    apt-get install -y webmin && \
-    apt-get clean
+    apt-get install -y webmin
+RUN apt-get clean
 
 EXPOSE 10000
 
