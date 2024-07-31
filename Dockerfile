@@ -1,6 +1,5 @@
 # Dockerfile for Webmin deployment
 # Inspired by the work of Johan Pienaar at https://github.com/johanpi/docker-webmin
-
 FROM ubuntu:latest
 LABEL maintainer="Bar Abudi <barabudy@gmail.com>"
 
@@ -12,22 +11,6 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     xargs -a packages.txt apt-get install -y && \
     rm -rf /var/lib/apt/lists/*
-
-# RUN apt-get update -y && \
-#     apt-get upgrade -y && \
-#     apt-get install -y \
-#         curl \
-#         wget \
-#         cron \
-#         gnupg2 \ 
-#         apt-transport-https \
-#         lsb-release \
-#         ca-certificates \
-#         software-properties-common \
-#         locales \
-#         perl \
-#         net-tools \
-#         fdisk
 RUN dpkg-reconfigure locales
 
 # Install Webmin
