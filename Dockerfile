@@ -19,7 +19,8 @@ RUN apt-get update -y && \
         ca-certificates \
         software-properties-common \
         locales \
-        perl
+        perl \
+        net-tools
 RUN dpkg-reconfigure locales
 
 
