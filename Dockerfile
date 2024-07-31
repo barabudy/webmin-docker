@@ -38,6 +38,6 @@ EXPOSE 10000
 
 RUN echo "#! /bin/bash" > start_webmin.sh && \
     echo "systemctl enable cron && service webmin start && tail -f /dev/null" >> start_webmin.sh && \
-    chmod 755 webmin.sh
+    chmod 755 start_webmin.sh
 
 CMD /webmin/start_webmin.sh
