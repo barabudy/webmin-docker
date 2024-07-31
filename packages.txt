@@ -1,0 +1,12 @@
+curl
+wget
+cron
+gnupg2
+apt-transport-https
+lsb-release
+ca-certificates
+software-properties-common
+locales
+perl
+net-tools
+fdisk

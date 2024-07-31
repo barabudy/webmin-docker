@@ -6,23 +6,29 @@ LABEL maintainer="Bar Abudi <barabudy@gmail.com>"
 
 WORKDIR /webmin
 
-# Install updates and additional required packages
+# Install updates and additional required package dependencies
+COPY packages.txt ./webmin/
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y \
-        curl \
-        wget \
-        cron \
-        gnupg2 \ 
-        apt-transport-https \
-        lsb-release \
-        ca-certificates \
-        software-properties-common \
-        locales \
-        perl \
-        net-tools
-RUN dpkg-reconfigure locales
+    xargs -a packages.txt apt-get install -y && \
+    rm -rf /var/lib/apt/lists/*
 
+# RUN apt-get update -y && \
+#     apt-get upgrade -y && \
+#     apt-get install -y \
+#         curl \
+#         wget \
+#         cron \
+#         gnupg2 \ 
+#         apt-transport-https \
+#         lsb-release \
+#         ca-certificates \
+#         software-properties-common \
+#         locales \
+#         perl \
+#         net-tools \
+#         fdisk
+RUN dpkg-reconfigure locales
 
 # Install Webmin
 RUN echo root:password | chpasswd && \
