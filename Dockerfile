@@ -6,7 +6,7 @@ LABEL maintainer="Bar Abudi <barabudy@gmail.com>"
 WORKDIR /webmin
 
 # Install updates and additional required package dependencies
-COPY packages.txt ./webmin/
+COPY packages.txt .
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     xargs -a packages.txt apt-get install -y && \
@@ -17,7 +17,7 @@ RUN dpkg-reconfigure locales
 RUN echo root:password | chpasswd && \
     echo "Acquire::GzipIndexes \"false\"; Acquire::CompressionTypes::Order:: \"gz\";" >/etc/apt/apt.conf.d/docker-gzip-indexes && \
     update-locale LANG=C.UTF-8 && \
-    echo deb https://download.webmin.com/download/repository sarge contrib >> /etc/apt/sources.list && \
+    echo deb https://download.webmin.com/download/newkey/repository sarge contrib >> /etc/apt/sources.list && \
     wget http://www.webmin.com/jcameron-key.asc && \
     apt-key add jcameron-key.asc && \
     apt-get update && \
